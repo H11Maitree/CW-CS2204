@@ -71,9 +71,12 @@ nav{
     right: 0px;
     width: auto;
     height: auto;
+    border-radius: 2rem 0rem 0rem 2rem;
     background-color: #F0E4D7;
     padding: 0.3rem;
-    opacity: 100%;
+    opacity: 80%;
+    padding-left: 1rem;
+
     
 }
 header{
