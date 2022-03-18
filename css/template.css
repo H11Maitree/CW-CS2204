@@ -19,6 +19,23 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+a:hover{
+    animation-duration: 0.5s;
+    animation-name: linkpop;
+    animation-timing-function: ease-in-out;
+    position:relative;
+
+}
+
+@keyframes linkpop {
+    from, to{
+        font-size: 1.2rem;
+    }
+    50%{
+        font-size: 1.3rem;
+    }
+}
+
 #logo {
     animation-duration: 3s;
     animation-name: slidein;
