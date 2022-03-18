@@ -5,129 +5,144 @@
     <link rel="icon" href="../src/img/sm-logo.png">
     <link rel="stylesheet" href="../css/template.css">
     <title>Ticket</title>
+    <style>
+        .selectable:hover{
+            background-color: #98A7AC;
+        }
+        table tr td{
+            width: 3rem;
+            text-align: center;
+        }
+        table{
+            border: 1px solid;
+        }
+    </style>
+
 </head>
 
 <body>
 
     <header>
-        <h1>&nbsp;&nbsp;&nbsp;<img src="../src/img/logo-header.png" alt="Acul logo" width="50" height="50"> | Acul Cinéma</h1>
+        <h1><img src="../src/img/logo-header.png" alt="Acul logo" width="100" height="100" id="logo"> | Acul Cinéma</h1>
         <nav>
-            <h4>
-            <a href="home.html">Home</a><br>
-            <a href="now_showing.html">Now Showing</a><br>
-            <a href="ticket.html" id="current-page">Ticket</a>
-            </h4>
+                <h4>
+                    <a href="home.html">Home</a><br>
+                    <a href="now_showing.html">Now Showing</a><br>
+                    <a href="ticket.html" id="current-page">Ticket</a>
+                </h4>
+            
         </nav>
     </header>
     
     <section>
-        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Ticket</h2>
-        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cinéma: Acul Festival - Festival Walk<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Movie: Chocolate<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19 May 2020, 11:00am<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theater: Dolpy IMEX Queter</h3>
+        <h2 style="padding-left: 2em;">Ticket</h2>
+        <h3 style="padding-left: 3em;">Cinéma: Acul Festival - Festival Walk<br>
+            Movie: Chocolate<br>
+            19 May 2020, 11:00am<br>
+            Theater: Dolpy IMEX Queter</h3>
         <form action="print.html">
         <center>
             
             <table border="1">
                 <tr>
-                    <td><p>&nbsp;Row</p></td>
-                    <td><p>&nbsp;</p></td>
-                    <td><p>&nbsp;</p></td>
-                    <td><p>&nbsp;S</p></td>
-                    <td><p>&nbsp;C</p></td>
-                    <td><p>&nbsp;R</p></td>
-                    <td><p>&nbsp;E</p></td>
-                    <td><p>&nbsp;E</p></td>
-                    <td><p>&nbsp;N</p></td>
-                    <td><p>&nbsp;</p></td>
+                    <td style="width: auto;"><p>Row</p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p>S</p></td>
+                    <td><p>C</p></td>
+                    <td><p>R</p></td>
+                    <td><p>E</p></td>
+                    <td><p>E</p></td>
+                    <td><p>N</p></td>
+                    <td><p></p></td>
                     
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Alpha</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Alpha</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Beta</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Beta</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Gamma</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Gamma</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Delta</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Delta</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Omega</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Omega</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
                 <tr>
-                    <td><p>&nbsp;Sigma</p></td>
-                    <td><p>&nbsp;&nbsp;1&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;2&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;3&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;4&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;5&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;6&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;7&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;8&nbsp;&nbsp;</p></td>
-                    <td><p>&nbsp;&nbsp;9&nbsp;&nbsp;</p></td>
+                    <td style="width: auto;"><p>Sigma</p></td>
+                    <td class="selectable"><p>1</p></td>
+                    <td class="selectable"><p>2</p></td>
+                    <td class="selectable"><p>3</p></td>
+                    <td class="selectable"><p>4</p></td>
+                    <td class="selectable"><p>5</p></td>
+                    <td class="selectable"><p>6</p></td>
+                    <td class="selectable"><p>7</p></td>
+                    <td class="selectable"><p>8</p></td>
+                    <td class="selectable"><p>9</p></td>
                 </tr>
             </table>
         </center>
         <br>
-        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seat Booked<br></h3>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delta 4, Delta 5</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name='Confirm' value="Confirm"></p>
-    </form>
+        <div style="background-color: #98A7AC; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+        <h3 style="padding-left: 2em;">Seat Booked<br></h3>
+        <p style="padding-left: 3em;">Delta 4, Delta 5</p>
+        <p style="padding-left: 3em;"><input type="submit" name='Confirm' value="Confirm" id="ticket-confirm-button"></p>
+    </div></form>
     </section>
     
     <footer>
-        <p>&nbsp;&nbsp;Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
-        <p>&nbsp;&nbsp;<a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a></p>
-        <p>&nbsp;&nbsp;<a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
+        <p>Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
+        <p><a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a></p>
+        <p><a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
     </footer>
 
 </body>

@@ -5,25 +5,31 @@
     <link rel="icon" href="../src/img/sm-logo.png">
     <link rel="stylesheet" href="../css/template.css">
     <title>Now Showing</title>
+    <style>
+        .sh tr td{
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <h1>&nbsp;&nbsp;&nbsp;<img src="../src/img/logo-header.png" alt="Acul logo" width="50" height="50"> | Acul Cinéma</h1>
+        <h1><img src="../src/img/logo-header.png" alt="Acul logo" width="100" height="100" id="logo"> | Acul Cinéma</h1>
         <nav>
                 <h4>
                     <a href="home.html">Home</a><br>
                     <a href="now_showing.html" id="current-page">Now Showing</a><br>
                     <a href="ticket.html">Ticket</a>
                 </h4>
+            
         </nav>
     </header>
     
     <section>
-        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Now Showing</h2>
+        <h2 style="padding-left: 2em;">Now Showing</h2>
         <br>
-        <form action="ticket.html">
+        <form action="ticket.html" style="padding-bottom: 1rem;">
 
             <center>
                 <label for="branch">Select Cinema: </label>
@@ -34,15 +40,15 @@
                 </select>
 
                 <div class="List of Now Showing">
-                    <table border="0">
+                    <table border="0" class="sh">
                         <tr>
                             <td>
                                 <img src="../src/img/bigbuck.jpg" alt="bigbuck" width="150" height="100">
                             </td>
                             <td>
-                                <h5>&nbsp;&nbsp;Bigbuck</h5>
-                                <p>&nbsp;&nbsp;Cast: Alex SHEN, Hilton WILLIOM<br>&nbsp;&nbsp;Director: Zoey
-                                    DEFAN<br>&nbsp;&nbsp;Duration:
+                                <h5>Bigbuck</h5>
+                                <p>Cast: Alex SHEN, Hilton WILLIOM<br>Director: Zoey
+                                    DEFAN<br>Duration:
                                     123 mins
                                 </p>
                                 <label for="bigbuck-time">Showtime: </label>
@@ -60,9 +66,9 @@
                                 <img src="../src/img/casablanca.png" alt="casablanca" width="150" height="100">
                             </td>
                             <td>
-                                <h5>&nbsp;&nbsp;Casa Blanca</h5>
-                                <p>&nbsp;&nbsp;Cast: Emily JIMSON, Timouti FARANME<br>&nbsp;&nbsp;Director: Matthew
-                                    DECASA<br>&nbsp;&nbsp;Duration:
+                                <h5>Casa Blanca</h5>
+                                <p>Cast: Emily JIMSON, Timouti FARANME<br>Director: Matthew
+                                    DECASA<br>Duration:
                                     106 mins</p>
                                 <label for="casablanca-time">Showtime: </label>
                                 <select id="casablanca-time" name="casablanca-time">
@@ -78,9 +84,9 @@
                             <td><img src="../src/img/chocolate.jpg" alt="chocolate" width="150" height="100">
                             </td>
                             <td>
-                                <h5>&nbsp;&nbsp;Chocolate</h5>
-                                <p>&nbsp;&nbsp;Cast: Willy WONGA, Desmo CERTIGO<br>&nbsp;&nbsp;Director: Cara
-                                    DLELEVEEN<br>&nbsp;&nbsp;Duration:
+                                <h5>Chocolate</h5>
+                                <p>Cast: Willy WONGA, Desmo CERTIGO<br>Director: Cara
+                                    DLELEVEEN<br>Duration:
                                     68 mins</p>
                                     <label for="chocolate-time">Showtime: </label>
                                 <select id="chocolate-time" name="chocolate-time">
@@ -95,32 +101,32 @@
                 </div>
             </center>
         </form>
-        <div id="locations">
-            <h2>&nbsp;&nbsp;&nbsp;&nbsp;Our Cinémas</h2>
+        <div id="locations" style="background-color: #CDDAD8; padding-top: 1rem; padding-bottom: 1rem;">
+            <h2>Our Cinémas</h2>
             <center>
                 <table>
-                    <tr>
+                    <tr style="background-color: #98A7AC;">
                         <td>
-                            <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=80%20Tat%20Chee%20Ave,%20Kowloon%20Tong,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:400px;width:600px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500;}</style></div></div>
+                            <div class="mapouter"><div class="gmap_canvas"><iframe width=100% height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=80%20Tat%20Chee%20Ave,%20Kowloon%20Tong,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:400px;width:600px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500;}</style></div></div>
                         </td>
                         <td>
-                            <h3>&nbsp;&nbsp;Acul Festival - Festival Walk</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3>&nbsp;&nbsp;Acul Harbour - Victoria Harbour</h3>
-                        </td>
-                        <td>
-                            <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=Canton%20Rd,%20Tsim%20Sha%20Tsui,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:300px;width:500px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500px;}</style></div></div>
+                            <h3>Acul Festival - Festival Walk</h3>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <div class="mapouter"><div class="gmap_canvas"><iframe width="500" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=West%20Kowloon,%20Tsim%20Sha%20Tsui,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:300px;width:500px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500px;}</style></div></div>
+                            <h3>Acul Harbour - Victoria Harbour</h3>
                         </td>
                         <td>
-                            <h3>&nbsp;&nbsp;Acul West - West Kowloon</h3>
+                            <div class="mapouter"><div class="gmap_canvas"><iframe width=100%  height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=Canton%20Rd,%20Tsim%20Sha%20Tsui,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:300px;width:500px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500px;}</style></div></div>
+                        </td>
+                    </tr>
+                    <tr style="background-color: #98A7AC;">
+                        <td>
+                            <div class="mapouter"><div class="gmap_canvas"><iframe width=100%  height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=West%20Kowloon,%20Tsim%20Sha%20Tsui,%20Hong%20Kong&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:300px;width:500px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:500px;}</style></div></div>
+                        </td>
+                        <td>
+                            <h3>Acul West - West Kowloon</h3>
                         </td>
                     </tr>
                 </table>
@@ -129,10 +135,10 @@
     </section>
     
     <footer>
-        <p>&nbsp;&nbsp;Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
-        <p>&nbsp;&nbsp;<a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a>
+        <p>Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
+        <p><a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a>
         </p>
-        <p>&nbsp;&nbsp;<a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
+        <p><a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
     </footer>
 
 </body>

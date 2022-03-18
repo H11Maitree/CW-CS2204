@@ -5,43 +5,89 @@
     <link rel="icon" href="../src/img/sm-logo.png">
     <link rel="stylesheet" href="../css/template.css">
     <title>Print</title>
+    <style>
+        @media screen {
+            .onlyPrint {
+                display: none;
+            }
+        }
+
+        @media print {
+
+
+            body * {
+                visibility: hidden;
+            }
+
+            .section-to-print,
+            .section-to-print * {
+                visibility: visible;
+            }
+
+            .section-to-print {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .pagebreak {
+                page-break-before: always;
+            }
+
+            /* page-break-after works, as well */
+
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <h1>&nbsp;&nbsp;&nbsp;<img src="../src/img/logo-header.png" alt="Acul logo" width="50" height="50"> | Acul Cinéma</h1>
+        <h1><img src="../src/img/logo-header.png" alt="Acul logo" width="100" height="100" id="logo"> | Acul Cinéma</h1>
         <nav>
             <h4>
-            <a href="home.html">Home</a><br>
-            <a href="now_showing.html">Now Showing</a><br>
-            <a href="ticket.html">Ticket</a>
+                <a href="home.html">Home</a><br>
+                <a href="now_showing.html">Now Showing</a><br>
+                <a href="ticket.html">Ticket</a>
             </h4>
+
         </nav>
     </header>
-    
-    <section>
-        <h2>&nbsp;&nbsp;&nbsp;&nbsp;Print Ticket</h2>
+
+    <section style="padding-left: 2em;">
+
+        <h2>Print Ticket</h2>
         <hr>
-        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cinéma: Acul Festival - Festival Walk<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Movie: Chocolate<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19 May 2020, 11:00am<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theater: Dolpy IMEX Queter<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seat: Delta 4</h3>
-        <hr>
-        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cinéma: Acul Festival - Festival Walk<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Movie: Chocolate<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19 May 2020, 11:00am<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Theater: Dolpy IMEX Queter<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seat: Delta 5</h3>
-        <hr>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="home.html">Back to Home</a></p>
+        <div class="section-to-print">
+            <h2 class="onlyPrint">Ticket #1
+                <hr>
+            </h2>
+
+            <h3 style="padding-left: 1em;">Cinéma: Acul Festival - Festival Walk<br>
+                Movie: Chocolate<br>
+                19 May 2020, 11:00am<br>
+                Theater: Dolpy IMEX Queter<br>
+                Seat: Delta 4</h3>
+            <hr>
+            <div class="pagebreak onlyPrint"></div>
+            <h2 class="onlyPrint">Ticket #2
+                <hr>
+            </h2>
+
+            <h3 style="padding-left: 1em;">Cinéma: Acul Festival - Festival Walk<br>
+                Movie: Chocolate<br>
+                19 May 2020, 11:00am<br>
+                Theater: Dolpy IMEX Queter<br>
+                Seat: Delta 5</h3>
+            <hr>
+        </div>
+        <p><a href="home.html">Back to Home</a></p>
     </section>
-    
+
     <footer>
-        <p>&nbsp;&nbsp;Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
-        <p>&nbsp;&nbsp;<a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a></p>
-        <p>&nbsp;&nbsp;<a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
+        <p>Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
+        <p><a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a></p>
+        <p><a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
     </footer>
 
 </body>

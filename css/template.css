@@ -1,5 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald";
 
+
+
 html{
     background-color: #F3D8D1;
 }
@@ -9,6 +11,7 @@ body {
     padding: 0px;
     font-family: 'Cardo', serif;
     background-color: #F6F5F0;
+    font-size: 1.2rem;
    }
    
 h1, h2, h3, h4, h5, h6 {
@@ -98,4 +101,37 @@ footer{
 
 footer a{
     color: #3F3931;
+}
+
+button {
+    background-color: #0F4C81; /* Green */
+    border: 0rem;
+    color: white;
+    padding: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 0rem 1rem 0rem 1rem;
+  }
+
+.mapouter{
+    width: 50%;
+}
+
+#ticket-confirm-button{
+    background-color: #76AF7B; /* Green */
+    border: 0rem;
+    color: white;
+    padding: 0.4rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 1rem 0rem 1rem 0rem;
+}
+
+center{
+    margin-left: auto;
+    margin-right: auto;
 }
