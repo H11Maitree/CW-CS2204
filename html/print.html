@@ -6,36 +6,27 @@
     <link rel="stylesheet" href="../css/template.css">
     <title>Print</title>
     <style>
+
         @media screen {
             .onlyPrint {
                 display: none;
             }
+            
         }
 
         @media print {
 
-
-            body * {
-                visibility: hidden;
+            header,
+            footer,
+            .noPrint {
+                display: none;
             }
 
-            .section-to-print,
-            .section-to-print * {
-                visibility: visible;
+            .pageBreak {
+                break-after: page;
             }
 
-            .section-to-print {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-
-            #Tecket1 {
-                page-break-before: always;
-            }
-
-            /* page-break-after works, as well */
-
+            
         }
     </style>
 </head>
@@ -56,10 +47,10 @@
 
     <section style="padding-left: 2em;">
 
-        <h2>Print Ticket</h2>
+        <h2 class="noPrint">Print Ticket</h2>
         <hr>
         <div class="section-to-print">
-            <div id="Tecket1" style="break-after: page">
+            <div class="pageBreak">
                 <h2 class="onlyPrint">Ticket #1
                     <hr>
                 </h2>
@@ -69,9 +60,9 @@
                     19 May 2020, 11:00am<br>
                     Theater: Dolpy IMEX Queter<br>
                     Seat: Delta 4</h3>
-                <hr>
             </div>
-            <div id="Tecket2">
+            <hr>
+            <div class=" ">
                 <h2 class="onlyPrint">Ticket #2
                     <hr>
                 </h2>
@@ -81,10 +72,10 @@
                     19 May 2020, 11:00am<br>
                     Theater: Dolpy IMEX Queter<br>
                     Seat: Delta 5</h3>
-                <hr>
             </div>
+            <hr class="noPrint">
         </div>
-        <p><a href="home.html">Back to Home</a></p>
+        <p class="noPrint"><a href="home.html" >Back to Home</a></p>
     </section>
 
     <footer>
