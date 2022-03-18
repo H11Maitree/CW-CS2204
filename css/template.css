@@ -1,0 +1,98 @@
+@import "https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald";
+
+html{
+    background-color: #F3D8D1;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Cardo', serif;
+    background-color: #F6F5F0;
+   }
+   
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+#logo {
+    animation-duration: 3s;
+    animation-name: slidein;
+    position:relative;
+    
+    padding-left: 2rem;
+    padding-top: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+img:hover{
+    cursor: pointer;
+}
+
+@keyframes slidein {
+    from {
+        bottom: 0rem;
+        right: 0rem;
+    }
+    
+    35% {
+        bottom: 1rem;
+        right: 1rem;
+        transform: rotate(0deg);
+    }
+    45% {
+        bottom: 1rem;
+        right: 1rem;
+        transform-origin: 3rem 3rem;
+        transform: rotate(-25deg);
+    }
+    55% {
+        bottom: 1rem;
+        right: 1rem;
+        transform-origin: 3rem 3rem;
+        transform: rotate(-25deg);
+    }
+    65% {
+        bottom: 1rem;
+        right: 1rem;
+        transform: rotate(0deg);
+    }
+    
+    to {
+        bottom: 0rem;
+        right: 0rem;
+    }
+  }
+
+nav{
+    position: fixed;
+    right: 0px;
+    width: auto;
+    height: auto;
+    background-color: #F0E4D7;
+    padding: 0.3rem;
+    opacity: 100%;
+    
+}
+header{
+    padding-bottom: 0.5rem;
+    background-color: #F3D8D1;
+}
+nav a{
+    color: #3F3931;
+}
+#current-page{
+    pointer-events: none;
+}
+
+footer{
+    padding-top: 0.5rem;
+    background-color: #F3D8D1;
+    text-align: center;
+}
+
+footer a{
+    color: #3F3931;
+}
