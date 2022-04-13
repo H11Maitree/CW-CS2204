@@ -22,6 +22,88 @@
             clear: both;
         }
     </style>
+    <script src="../js/movies.js"></script>
+    <script>
+
+        function Template_Row(element) {
+            if(element.type==="now"){
+            return `<tr>
+                            <td>
+                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onclick="Play(`+element.id+`)">
+                            </td>
+                            <td>
+                                <h4>`+ element.name + `</h4>
+                                <p>Cast: `+ element.cast + `<br>Director: ` + element.director + `<br>Duration:
+                                    `+ element.duration + ` mins
+                                </p>
+                            </td>
+                        </tr>`
+                    }
+            else{
+                return `<tr>
+                            <td>
+                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100">
+                            </td>
+                            <td>
+                                <h4>`+ element.name + `</h4>
+                                <p>Cast: `+ element.cast + `<br>Director: ` + element.director + `<br>Duration:
+                                    `+ element.duration + ` mins
+                                </p>
+                            </td>
+                        </tr>`
+            }
+        }
+
+        function delay() {
+            return new Promise(resolve => setTimeout(resolve, 2000));
+        }
+        const Now_Showing_list = [];
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("initial HTML was loaded");
+            let Now_Showing_Table = document.getElementById("Now_Showing_Table");
+            let Upcoming_Table = document.getElementById("Upcoming_Table");
+            getMovies().forEach(element => {
+                console.log(element);
+                if (element.type === "now") {
+                    Now_Showing_Table.innerHTML = Now_Showing_Table.innerHTML + Template_Row(element);
+                    Now_Showing_list.push(element)
+                } else if (element.type === "upcoming") {
+                    Upcoming_Table.innerHTML = Upcoming_Table.innerHTML + Template_Row(element);
+                }
+            });
+            console.log(Now_Showing_list);
+            document.querySelector('video').src = Now_Showing_list[0].src;
+            document.getElementById("now_src").alt = Now_Showing_list[0].name;
+            document.getElementById("Today_pick_label").innerHTML = "Today's pick: "+Now_Showing_list[0].name;
+            document.getElementById('myVideo').poster="../src/img/"+Now_Showing_list[0].thumbnail;
+            document.getElementById('myVideo').addEventListener('ended', myHandler, false);
+            function myHandler(e) {
+                console.log("Ended");
+                delay().then(() => {
+                    console.log("Ended 2");
+                    Now_Showing_list.push(Now_Showing_list.shift());
+                    console.log(Now_Showing_list);
+                    document.querySelector('video').src = Now_Showing_list[0].src;
+                    document.getElementById("now_src").alt = Now_Showing_list[0].name;
+                    document.getElementById('myVideo').poster="../src/img/"+Now_Showing_list[0].thumbnail;
+                    document.getElementById("Today_pick_label").innerHTML = "Today's pick: "+Now_Showing_list[0].name;
+                });
+            }
+
+            
+        });
+
+        function Play(id) {
+            while(Now_Showing_list[0].id!==id){Now_Showing_list.push(Now_Showing_list.shift());}
+                
+                console.log(Now_Showing_list);
+                document.querySelector('video').src = Now_Showing_list[0].src;
+                document.getElementById("now_src").alt = Now_Showing_list[0].name;
+                document.getElementById('myVideo').poster = "../src/img/" + Now_Showing_list[0].thumbnail;
+                document.getElementById("Today_pick_label").innerHTML = "Today's pick: " + Now_Showing_list[0].name;
+            }
+        
+    </script>
 </head>
 
 <body>
@@ -43,11 +125,10 @@
     <section>
         <h2 style="padding-left: 2em;">Home</h2>
         <div class="Today Pick">
-            <h3 style="padding-left: 3em;">Today's pick: Barbecue 🍖</h3>
+            <h3 style="padding-left: 3em;" id="Today_pick_label">Today's pick: </h3>
             <center>
-                <video poster="../src/img/barbecue.jpg" alt="barbecue" width="60%" controls>
-                    <source src="https://courses.cs.cityu.edu.hk/cs2204/video/barbecue.mp4" type="video/mp4">
-                    <source src="https://courses.cs.cityu.edu.hk/cs2204/video/barbecue.ogg" type="video/ogg">
+                <video poster="#" alt="" width="60%" controls id="myVideo" autoplay muted>
+                    <source src="#" type="video/mp4" id="now_src">
                     Your browser does not support HTML5 video.
                 </video>
 
@@ -63,77 +144,15 @@
 
                 <div class="List-of-Now-Showing column">
                     <h3>Now Showing</h3>
-                    <table border="0" \>
-                        <tr>
-                            <td>
-                                <img src="../src/img/bigbuck.jpg" alt="bigbuck" width="150" height="100">
-                            </td>
-                            <td>
-                                <h4>Bigbuck</h4>
-                                <p>Cast: Alex SHEN, Hilton WILLIOM<br>Director: Zoey
-                                    DEFAN<br>Duration:
-                                    123 mins
-                                </p>
-                            </td>
-                        </tr>
+                    <table border="0" id="Now_Showing_Table">
 
-                        <tr>
-                            <td>
-                                <img src="../src/img/casablanca.png" alt="casablanca" width="150" height="100">
-                            </td>
-                            <td>
-                                <h4>Casa Blanca</h4>
-                                <p>Cast: Emily JIMSON, Timouti FARANME<br>Director: Matthew
-                                    DECASA<br>Duration:
-                                    106 mins</p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><img src="../src/img/chocolate.jpg" alt="chocolate" width="150" height="100">
-                            </td>
-                            <td>
-                                <h4>Chocolate</h4>
-                                <p>Cast: Willy WONGA, Desmo CERTIGO<br>Director: Cara
-                                    DLELEVEEN<br>Duration:
-                                    68 mins</p>
-                            </td>
-                        </tr>
                     </table>
                 </div>
 
                 <div class="List-of-Upcoming column">
                     <h3>Upcoming</h3>
-                    <table border="0">
-                        <tr>
-                            <td><img src="../src/img/nature.jpg" alt="nature" width="150" height="100"></td>
-                            <td>
-                                <h4>Nature</h4>
-                                <p>Cast: - <br>Director: Beargrill
-                                    DELCATHON<br>Duration:
-                                    112 mins</p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><img src="../src/img/wildlife.jpg" alt="wildlife" width="150" height="100"></td>
-                            <td>
-                                <h4>Wildlife</h4>
-                                <p>Cast: - <br>Director: Falton
-                                    WESTVERSON<br>Duration:
-                                    69 mins</p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><img src="../src/img/wonders.jpg" alt="Wonders" width="150" height="100"></td>
-                            <td>
-                                <h4>Wonders</h4>
-                                <p>Cast: - <br>Director: Lomal SELTON, Don
-                                    QUESTRE<br>Duration:
-                                    101 mins</p>
-                            </td>
-                        </tr>
+                    <table border="0" id="Upcoming_Table">
+                        
                     </table>
                 </div>
             </div>
