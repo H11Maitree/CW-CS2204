@@ -23,13 +23,14 @@
         }
     </style>
     <script src="../js/movies.js"></script>
+    <script src="../js/onerror.js"></script>
     <script>
 
         Template_Row = (element) => {
             
             return `<tr>
                             <td>
-                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onclick="Play(`+element.id+`)">
+                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onclick="Play(`+element.id+`)" onerror="imgError(this);">
                             </td>
                             <td>
                                 <h4>`+ element.name + `</h4>
@@ -49,6 +50,7 @@
         const Now_Showing_list_ID = [];
         document.addEventListener('DOMContentLoaded', () => {
             console.log("initial HTML was loaded");
+            
             let Now_Showing_Table = document.getElementById("Now_Showing_Table");
             let Upcoming_Table = document.getElementById("Upcoming_Table");
             getMovies().forEach(element => {
