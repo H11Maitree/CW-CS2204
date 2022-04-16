@@ -6,18 +6,79 @@
     <link rel="stylesheet" href="../css/template.css">
     <title>Ticket</title>
     <style>
-        .selectable:hover{
+        .selectable:hover {
             background-color: #98A7AC;
         }
-        table tr td{
+
+        .selected {
+            background-color: #667075;
+        }
+
+        table tr td {
             width: 3rem;
             text-align: center;
         }
-        table{
+
+        table {
             border: 1px solid;
         }
-    </style>
 
+        #data_phrasing {
+            display: none;
+        }
+    </style>
+    <script>
+
+
+
+        var seat_array = new Array;
+
+        function validateForm() {
+            if (seat_array.length == 0) {
+                alert("Please select some seat!");
+                return false;
+            }
+        }
+        function click(seat) {
+            console.log("Clicked" + seat);
+            let focus_seat = document.getElementById(seat);
+            focus_seat.classList.add('selected');
+            focus_seat.classList.remove('selectable');
+            focus_seat.onclick = null;
+            let display_selected = document.getElementById("display_selected");
+            if (display_selected.innerHTML == "You haven't select any seat yet.") {
+
+                display_selected.innerHTML = seat.replace("-", " ");
+            }
+            else { display_selected.innerHTML = display_selected.innerHTML + ", " + seat.replace("-", " "); }
+            seat_array.push(seat.replace("-", " "));
+            document.getElementById("data_phrasing").value = JSON.stringify({obj,"seats":seat_array});
+
+        }
+
+        template_text = (obj) => {
+            return `Cinéma: ` + obj.cinema_name + `<br>
+            Movie: `+ obj.movie_name + `<br>
+            `+ obj.datetime + `<br>
+            Theater (House): `+ obj.house + ``;
+        }
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        console.log(urlParams.get('param'));
+        var obj = JSON.parse(urlParams.get('param'));
+        console.log(obj);
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let text_oup_doc = document.getElementById("text_opt");
+            text_oup_doc.innerHTML = template_text(obj);
+
+
+        });
+
+
+    </script>
 </head>
 
 <body>
@@ -25,125 +86,270 @@
     <header>
         <h1><img src="../src/img/logo-header.png" alt="Acul logo" width="100" height="100" id="logo"> | Acul Cinéma</h1>
         <nav>
-                <h4>
-                    <a href="home.html">Home</a><br>
-                    <a href="now_showing.html">Now Showing</a><br>
-                    <a href="ticket.html" id="current-page">Ticket</a>
-                </h4>
-            
+            <h4>
+                <a href="home.html">Home</a><br>
+                <a href="now_showing.html">Now Showing</a><br>
+                <a href="ticket.html" id="current-page">Ticket</a>
+            </h4>
+
         </nav>
     </header>
-    
+
     <section>
         <h2 style="padding-left: 2em;">Ticket</h2>
-        <h3 style="padding-left: 3em;">Cinéma: Acul Festival - Festival Walk<br>
-            Movie: Chocolate<br>
-            19 May 2020, 11:00am<br>
-            Theater: Dolpy IMEX Queter</h3>
-        <form action="print.html">
-        <center>
-            
-            <table border="1">
-                <tr>
-                    <td style="width: auto;"><p>Row</p></td>
-                    <td><p></p></td>
-                    <td><p></p></td>
-                    <td><p>S</p></td>
-                    <td><p>C</p></td>
-                    <td><p>R</p></td>
-                    <td><p>E</p></td>
-                    <td><p>E</p></td>
-                    <td><p>N</p></td>
-                    <td><p></p></td>
-                    
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Alpha</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Beta</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Gamma</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Delta</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Omega</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-                <tr>
-                    <td style="width: auto;"><p>Sigma</p></td>
-                    <td class="selectable"><p>1</p></td>
-                    <td class="selectable"><p>2</p></td>
-                    <td class="selectable"><p>3</p></td>
-                    <td class="selectable"><p>4</p></td>
-                    <td class="selectable"><p>5</p></td>
-                    <td class="selectable"><p>6</p></td>
-                    <td class="selectable"><p>7</p></td>
-                    <td class="selectable"><p>8</p></td>
-                    <td class="selectable"><p>9</p></td>
-                </tr>
-            </table>
-        </center>
-        <br>
-        <div style="background-color: #CDDAD8; padding-top: 0.5rem; padding-bottom: 0.5rem;">
-        <h3 style="padding-left: 2em;">Seat Booked<br></h3>
-        <p style="padding-left: 3em;">Delta 4, Delta 5</p>
-        <p style="padding-left: 3em;"><input type="submit" name='Confirm' value="Confirm" id="ticket-confirm-button"></p>
-    </div></form>
+        <h3 style="padding-left: 3em;" id="text_opt">Cinéma: <br>
+            Movie: <br>
+            <br>
+            Theater:
+        </h3>
+        <form action="print.html" id="form_id" onsubmit="return validateForm()">
+            <center>
+
+                <table border="1" id="tableId">
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Row</p>
+                        </td>
+                        <td>
+                            <p></p>
+                        </td>
+                        <td>
+                            <p></p>
+                        </td>
+                        <td>
+                            <p>S</p>
+                        </td>
+                        <td>
+                            <p>C</p>
+                        </td>
+                        <td>
+                            <p>R</p>
+                        </td>
+                        <td>
+                            <p>E</p>
+                        </td>
+                        <td>
+                            <p>E</p>
+                        </td>
+                        <td>
+                            <p>N</p>
+                        </td>
+                        <td>
+                            <p></p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Alpha</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-1')" id="Alpha-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-2')" id="Alpha-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-3')" id="Alpha-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-4')" id="Alpha-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-5')" id="Alpha-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-6')" id="Alpha-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-7')" id="Alpha-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-8')" id="Alpha-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Alpha-9')" id="Alpha-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Beta</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-1')" id="Beta-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-2')" id="Beta-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-3')" id="Beta-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-4')" id="Beta-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-5')" id="Beta-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-6')" id="Beta-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-7')" id="Beta-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-8')" id="Beta-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Beta-9')" id="Beta-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Gamma</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-1')" id="Gamma-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-2')" id="Gamma-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-3')" id="Gamma-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-4')" id="Gamma-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-5')" id="Gamma-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-6')" id="Gamma-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-7')" id="Gamma-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-8')" id="Gamma-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Gamma-9')" id="Gamma-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Delta</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-1')" id="Delta-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-2')" id="Delta-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-3')" id="Delta-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-4')" id="Delta-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-5')" id="Delta-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-6')" id="Delta-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-7')" id="Delta-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-8')" id="Delta-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Delta-9')" id="Delta-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Omega</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-1')" id="Omega-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-2')" id="Omega-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-3')" id="Omega-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-4')" id="Omega-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-5')" id="Omega-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-6')" id="Omega-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-7')" id="Omega-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-8')" id="Omega-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Omega-9')" id="Omega-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: auto;">
+                            <p>Sigma</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-1')" id="Sigma-1">
+                            <p>1</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-2')" id="Sigma-2">
+                            <p>2</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-3')" id="Sigma-3">
+                            <p>3</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-4')" id="Sigma-4">
+                            <p>4</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-5')" id="Sigma-5">
+                            <p>5</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-6')" id="Sigma-6">
+                            <p>6</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-7')" id="Sigma-7">
+                            <p>7</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-8')" id="Sigma-8">
+                            <p>8</p>
+                        </td>
+                        <td class="selectable" onclick="window.click('Sigma-9')" id="Sigma-9">
+                            <p>9</p>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+            <br>
+            <div style="background-color: #CDDAD8; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                <h3 style="padding-left: 2em;">Seat Booked<br></h3>
+                <p style="padding-left: 3em;" id="display_selected">You haven't select any seat yet.</p>
+                <p style="padding-left: 3em;"><input type="submit" name='Confirm' value="Confirm"
+                        id="ticket-confirm-button"></p>
+                <input type="text" id="data_phrasing" value="[]" name="data">
+            </div>
+        </form>
     </section>
-    
+
     <footer>
         <p>Unpublished Work © 2020 Acul - Fair use for education purpose.</p>
         <p><a href="home.html">Home</a> | <a href="design.html">Design</a> | <a href="">Privacy & Terms</a></p>
         <p><a href="mailto:mhiruntee2@my.cityu.edu.hk">Help@Acul.com</a></p>
     </footer>
+
 
 </body>
 

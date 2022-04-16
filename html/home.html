@@ -25,8 +25,8 @@
     <script src="../js/movies.js"></script>
     <script>
 
-        function Template_Row(element) {
-            if(element.type==="now"){
+        Template_Row = (element) => {
+            
             return `<tr>
                             <td>
                                 <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onclick="Play(`+element.id+`)">
@@ -38,26 +38,15 @@
                                 </p>
                             </td>
                         </tr>`
-                    }
-            else{
-                return `<tr>
-                            <td>
-                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100">
-                            </td>
-                            <td>
-                                <h4>`+ element.name + `</h4>
-                                <p>Cast: `+ element.cast + `<br>Director: ` + element.director + `<br>Duration:
-                                    `+ element.duration + ` mins
-                                </p>
-                            </td>
-                        </tr>`
-            }
+                    
+            
         }
 
-        function delay() {
+        delay = () => {
             return new Promise(resolve => setTimeout(resolve, 2000));
         }
         const Now_Showing_list = [];
+        const Now_Showing_list_ID = [];
         document.addEventListener('DOMContentLoaded', () => {
             console.log("initial HTML was loaded");
             let Now_Showing_Table = document.getElementById("Now_Showing_Table");
@@ -66,7 +55,8 @@
                 console.log(element);
                 if (element.type === "now") {
                     Now_Showing_Table.innerHTML = Now_Showing_Table.innerHTML + Template_Row(element);
-                    Now_Showing_list.push(element)
+                    Now_Showing_list.push(element);
+                    Now_Showing_list_ID.push(element.id);
                 } else if (element.type === "upcoming") {
                     Upcoming_Table.innerHTML = Upcoming_Table.innerHTML + Template_Row(element);
                 }
@@ -77,6 +67,7 @@
             document.getElementById("Today_pick_label").innerHTML = "Today's pick: "+Now_Showing_list[0].name;
             document.getElementById('myVideo').poster="../src/img/"+Now_Showing_list[0].thumbnail;
             document.getElementById('myVideo').addEventListener('ended', myHandler, false);
+            
             function myHandler(e) {
                 console.log("Ended");
                 delay().then(() => {
@@ -94,14 +85,32 @@
         });
 
         function Play(id) {
-            while(Now_Showing_list[0].id!==id){Now_Showing_list.push(Now_Showing_list.shift());}
+            if (Now_Showing_list_ID.includes(id)===false) {
+                //Now_Showing_list.push(Now_Showing_list.shift());
+                console.log("playing an up-coming.");
+                var obj;
+                for (obj of getMovies()) {
+                    if (obj.id===id){
+                        break;
+                    }
+                }
+                
+                document.querySelector('video').src = obj.src;
+                document.getElementById("now_src").alt = obj.name;
+                document.getElementById('myVideo').poster = "../src/img/" + obj.thumbnail;
+                document.getElementById("Today_pick_label").innerHTML = "Playing: " + obj.name;
+            }
+            else{
+                while(Now_Showing_list[0].id!==id){Now_Showing_list.push(Now_Showing_list.shift());}
                 
                 console.log(Now_Showing_list);
                 document.querySelector('video').src = Now_Showing_list[0].src;
                 document.getElementById("now_src").alt = Now_Showing_list[0].name;
                 document.getElementById('myVideo').poster = "../src/img/" + Now_Showing_list[0].thumbnail;
                 document.getElementById("Today_pick_label").innerHTML = "Today's pick: " + Now_Showing_list[0].name;
+            
             }
+                }
         
     </script>
 </head>

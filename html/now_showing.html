@@ -10,6 +10,82 @@
             padding: 1rem;
         }
     </style>
+    <script src="../js/movies.js"></script>
+    <script src="../js/cinemas.js"></script>
+    <script>
+
+        option_template = (element,movie_name,cinema_name)=>{
+            // `+element.datetime+" "+element.house+`
+            return `<option value='{"cinema_name":"`+cinema_name+`","movie_name":"`+movie_name+`","datetime":"`+element.datetime+`", "house":`+element.house+`}'>`+element.datetime+`</option>`;
+        }
+        table_template = (element,shows,cinema_name)=>{
+
+            var options = "";
+
+            shows.forEach(shows_element => {
+                options = options+ option_template(shows_element,element.name,cinema_name); 
+            });
+
+            return `<tr>
+                            <td>
+                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100">
+                            </td>
+                            <td>
+                                <form action="ticket.html">
+                                <h5>`+element.name+`</h5>
+                                <p>Cast: `+ element.cast + `<br>Director: ` + element.director + `<br>Duration:
+                                    `+ element.duration + ` mins
+                                </p>
+                                <label for="`+element.name+`-time">Showtime: </label>
+                                <select id="`+element.name+`-time" name="param">
+                                    `+options+`
+                                </select>
+                                <button type="submit" name="`+element.name+`" value="Buy Ticket">Buy Ticket</button>
+                                </form>
+                            </td>
+                        </tr>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let table=document.getElementById("table");
+            console.log(getCinemas());
+            let branch_drop_down = document.getElementById("branch");
+            getCinemas().forEach(cinemas => {
+                branch_drop_down.innerHTML = branch_drop_down.innerHTML+`<option value="`+cinemas.branchName+`">`+cinemas.branchName+`</option>`
+            });
+            update_cinema();
+        });
+        
+
+        get_movie_data = (id)=>{
+            var movie_obj;
+            for(movie_obj of getMovies() ){
+                if(movie_obj.id===id){
+                    break;
+                }
+            }
+            return movie_obj;
+        }
+
+        update_cinema = ()=>{
+            
+            let focus_branchName = document.getElementById("branch").value
+            table.innerHTML = "";
+            var obj;
+            for(obj of getCinemas()){
+                if(obj.branchName === focus_branchName){
+                    break;
+                }
+            }
+            
+            obj.movies.forEach(movie_theater_element => {
+                let info = get_movie_data(movie_theater_element.id);
+                table.innerHTML = table.innerHTML + table_template(info,movie_theater_element.shows,focus_branchName);
+            });
+
+        }
+        
+    </script>
 </head>
 
 <body>
@@ -29,19 +105,20 @@
     <section>
         <h2 style="padding-left: 2em;">Now Showing</h2>
         <br>
-        <form action="ticket.html" style="padding-bottom: 1rem;">
-
+        <!-- <form action="ticket.html" style="padding-bottom: 1rem;"> -->
+            <div style="padding-bottom: 1rem;">
             <center>
                 <label for="branch">Select Cinema: </label>
-                <select id="branch" name="branch">
-                    <option value="Festiva">Acul Festival - Festival Walk</option>
+                <select id="branch" name="branch" onchange="update_cinema()">
+
+                    <!-- <option value="Festiva">Acul Festival - Festival Walk</option>
                     <option value="Harbour">Acul Harbour - Victoria Harbour</option>
-                    <option value="West">Acul West - West Kowloon</option>
+                    <option value="West">Acul West - West Kowloon</option> -->
                 </select>
 
                 <div class="List of Now Showing">
-                    <table border="0" class="sh">
-                        <tr>
+                    <table border="0" class="sh" id="table">
+                        <!-- <tr>
                             <td>
                                 <img src="../src/img/bigbuck.jpg" alt="bigbuck" width="150" height="100">
                             </td>
@@ -96,11 +173,12 @@
                                 </select>
                                 <button type="submit" name="Chocolate" value="Buy Ticket">Buy Ticket</button>
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </center>
-        </form>
+            </div>
+        <!-- </form> -->
         <div id="locations" style="background-color: #CDDAD8; padding-top: 1rem; padding-bottom: 1rem;">
             <h2 style="padding-left: 3rem;">Our Cinémas</h2>
             <center>

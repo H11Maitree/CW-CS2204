@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="../css/template.css">
     <title>Print</title>
     <style>
-
         @media screen {
             .onlyPrint {
                 display: none;
             }
-            
+
         }
 
         @media print {
@@ -26,9 +25,56 @@
                 break-after: page;
             }
 
-            
+
         }
     </style>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        console.log(urlParams.get('data'));
+        var obj = JSON.parse(urlParams.get('data'));
+        console.log(obj);
+
+        template = (no,cinema,movie,time,house,seat)=>{
+            return `<div class="pageBreak">
+                <h2 class="onlyPrint">Ticket #`+no+`
+                    <hr>
+                </h2>
+
+                <h3 style="padding-left: 1em;">Cinéma: `+cinema+`<br>
+                    Movie: `+movie+`<br>
+                    `+time+`<br>
+                    Theater (House): `+house+`<br>
+                    Seat: `+seat+`</h3>
+            </div>
+            <hr>`;
+        }
+        template_last = (no,cinema,movie,time,house,seat)=>{
+            return `<div class=" ">
+                <h2 class="onlyPrint">Ticket #`+no+`
+                    <hr>
+                </h2>
+
+                <h3 style="padding-left: 1em;">Cinéma: `+cinema+`<br>
+                    Movie: `+movie+`<br>
+                    `+time+`<br>
+                    Theater (House): `+house+`<br>
+                    Seat: `+seat+`</h3>
+                </div>
+            <hr class="noPrint">`;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            let seats = obj.seats;
+            let area = document.getElementById("ticket_area");
+            var i;
+            for (i = 0; i < seats.length-1; i++) {
+                area.innerHTML = area.innerHTML+template(i+1,obj.obj.cinema_name,obj.obj.movie_name,obj.obj.datetime,obj.obj.house,seats[i]);
+            }
+            area.innerHTML = area.innerHTML+template_last(i+1,obj.obj.cinema_name,obj.obj.movie_name,obj.obj.datetime,obj.obj.house,seats[i]);
+        });
+
+
+    </script>
 </head>
 
 <body>
@@ -49,7 +95,19 @@
 
         <h2 class="noPrint">Print Ticket</h2>
         <hr>
-        <div class="section-to-print">
+        <div class="section-to-print" id="ticket_area">
+            <!-- <div class="pageBreak">
+                <h2 class="onlyPrint">Ticket #1
+                    <hr>
+                </h2>
+
+                <h3 style="padding-left: 1em;">Cinéma: Acul Festival - Festival Walk<br>
+                    Movie: Chocolate<br>
+                    19 May 2020, 11:00am<br>
+                    Theater: Dolpy IMEX Queter<br>
+                    Seat: Delta 4</h3>
+            </div>
+            <hr>
             <div class="pageBreak">
                 <h2 class="onlyPrint">Ticket #1
                     <hr>
@@ -73,9 +131,9 @@
                     Theater: Dolpy IMEX Queter<br>
                     Seat: Delta 5</h3>
             </div>
-            <hr class="noPrint">
+            <hr class="noPrint"> -->
         </div>
-        <p class="noPrint"><a href="home.html" >Back to Home</a></p>
+        <p class="noPrint"><a href="home.html">Back to Home</a></p>
     </section>
 
     <footer>
