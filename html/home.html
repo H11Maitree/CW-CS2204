@@ -30,7 +30,7 @@
             
             return `<tr>
                             <td>
-                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onclick="Play(`+element.id+`)" onerror="imgError(this);">
+                                <img src="`+validat_thumbnail(element.thumbnail)+`" alt="` + element.name + `" width="150"  onclick="Play(`+element.id+`)" onerror="imgError(this);">
                             </td>
                             <td>
                                 <h4>`+ element.name + `</h4>
@@ -67,7 +67,7 @@
             document.querySelector('video').src = Now_Showing_list[0].src;
             document.getElementById("now_src").alt = Now_Showing_list[0].name;
             document.getElementById("Today_pick_label").innerHTML = "Today's pick: "+Now_Showing_list[0].name;
-            document.getElementById('myVideo').poster="../src/img/"+Now_Showing_list[0].thumbnail;
+            document.getElementById('myVideo').poster=validat_thumbnail(Now_Showing_list[0].thumbnail);
             document.getElementById('myVideo').addEventListener('ended', myHandler, false);
             
             function myHandler(e) {
@@ -78,7 +78,7 @@
                     console.log(Now_Showing_list);
                     document.querySelector('video').src = Now_Showing_list[0].src;
                     document.getElementById("now_src").alt = Now_Showing_list[0].name;
-                    document.getElementById('myVideo').poster="../src/img/"+Now_Showing_list[0].thumbnail;
+                    document.getElementById('myVideo').poster=validat_thumbnail(Now_Showing_list[0].thumbnail);
                     document.getElementById("Today_pick_label").innerHTML = "Today's pick: "+Now_Showing_list[0].name;
                 });
             }
@@ -99,7 +99,7 @@
                 
                 document.querySelector('video').src = obj.src;
                 document.getElementById("now_src").alt = obj.name;
-                document.getElementById('myVideo').poster = "../src/img/" + obj.thumbnail;
+                document.getElementById('myVideo').poster = validat_thumbnail(obj.thumbnail);
                 document.getElementById("Today_pick_label").innerHTML = "Playing: " + obj.name;
             }
             else{
@@ -108,7 +108,7 @@
                 console.log(Now_Showing_list);
                 document.querySelector('video').src = Now_Showing_list[0].src;
                 document.getElementById("now_src").alt = Now_Showing_list[0].name;
-                document.getElementById('myVideo').poster = "../src/img/" + Now_Showing_list[0].thumbnail;
+                document.getElementById('myVideo').poster = validat_thumbnail(Now_Showing_list[0].thumbnail);
                 document.getElementById("Today_pick_label").innerHTML = "Today's pick: " + Now_Showing_list[0].name;
             
             }

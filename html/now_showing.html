@@ -31,7 +31,7 @@
 
             return `<tr>
                             <td>
-                                <img src="../src/img/`+ element.thumbnail + `" alt="` + element.name + `" width="150" height="100" onerror="imgError(this);">
+                                <img src="`+  validat_thumbnail(element.thumbnail) +`" alt="` + element.name + `" width="150"  onerror="imgError(this);">
                             </td>
                             <td>
                                 <form action="ticket.html">
