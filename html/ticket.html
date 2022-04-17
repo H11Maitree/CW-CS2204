@@ -65,9 +65,16 @@
 
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        console.log(urlParams.get('param'));
-        var obj = JSON.parse(urlParams.get('param'));
+        var obj;
+        if(urlParams.get('param')==null){
+        obj = JSON.parse(`{"cinema_name":"City Cinema - Festival Walk","movie_name":"Cassblanca","datetime":"8 Nov, Sun - 9:00am", "house":3}`);
         console.log(obj);
+        }
+        else{
+        console.log(urlParams.get('param'));
+        obj = JSON.parse(urlParams.get('param'));
+        console.log(obj);
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
 
