@@ -9,6 +9,7 @@ There are 3 dir in this project.
 | ------ | ------ |
 | css | Contain css (template) |
 | html | Each page of the web |
+| js | Contain Javascript global files |
 | src | Media files |
 
 ##### index.html
